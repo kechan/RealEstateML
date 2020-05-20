@@ -1,16 +1,3 @@
-#!/bin/bash
-#if [ ! -e /content/models ]; then
-#        mkdir -p /root/.torch/models
-#        mkdir -p /root/.fastai/data
-#        ln -s /root/.torch/models /content
-#        ln -s /root/.fastai/data /content
-#        rm -rf /content/sample_data/
-#fi
-
-#echo Updating tensorflow to nightly...
-#pip install fastai --upgrade > /dev/null
-#!pip install tf-nightly --quiet > /dev/null
-
 import os, gc
 
 def onColab(): return os.path.exists('/content')
@@ -32,4 +19,4 @@ if bOnColab and not os.path.exists('/content/drive'):       # presence of /conte
 #   drive.mount('/content/drive', force_remount=True)
 
 #my_ip = !curl ipecho.net/plain
-#echo Done.
+
