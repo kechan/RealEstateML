@@ -7,8 +7,29 @@
 #        rm -rf /content/sample_data/
 #fi
 
-echo Updating tensorflow to nightly...
+#echo Updating tensorflow to nightly...
 #pip install fastai --upgrade > /dev/null
 !pip install tf-nightly --quiet > /dev/null
 
-echo Done.
+import os, gc
+
+def onColab(): return os.path.exists('/content')
+
+bOnColab = onColab()
+
+if bOnColab:
+  from google.colab import auth
+  auth.authenticate_user()
+  print('Authenticated')
+  
+if bOnColab and not os.path.exists('/content/drive'):       # presence of /content indicates you are on google colab
+    from google.colab import drive
+    drive.mount('/content/drive')
+
+# run these if filesystem won't refresh
+# if bOnColab:
+#   from google.colab import drive
+#   drive.mount('/content/drive', force_remount=True)
+
+my_ip = !curl ipecho.net/plain
+#echo Done.
