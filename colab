@@ -31,5 +31,5 @@ if bOnColab and not os.path.exists('/content/drive'):       # presence of /conte
 #   from google.colab import drive
 #   drive.mount('/content/drive', force_remount=True)
 
-my_ip = !curl ipecho.net/plain
+#my_ip = !curl ipecho.net/plain
 #echo Done.
