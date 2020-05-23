@@ -72,7 +72,7 @@ blob.download_to_filename(str(data/'listing_df'))
 
 for shard in range(10):
   blob = storage_bucket.blob(f'Labelling/data/listing_es_{shard}_df')
-  blob.download_to_filename(str(data/f'listing_es_{shard}_df')
+  blob.download_to_filename(str(data/f'listing_es_{shard}_df'))
 
 sys.path.insert(0, str(utils_path))
 
