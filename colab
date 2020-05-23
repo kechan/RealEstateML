@@ -1,22 +1,73 @@
-import os, gc
+import os, gc, sys, time, pickle, pytz, multiprocessing, h5py, glob, re, PIL, base64, shutil, random
+from pathlib import *
+from datetime import date, datetime, timedelta
 
-def onColab(): return os.path.exists('/content')
 
-bOnColab = onColab()
-
-if bOnColab:
-  from google.colab import auth
-  auth.authenticate_user()
-  print('Authenticated')
+from google.colab import auth
+auth.authenticate_user()
+print('Authenticated')
   
-if bOnColab and not os.path.exists('/content/drive'):       # presence of /content indicates you are on google colab
-    from google.colab import drive
-    drive.mount('/content/drive')
+from google.colab import drive
+drive.mount('/content/drive')
+print('gdrive mounted')
 
-# run these if filesystem won't refresh
-# if bOnColab:
-#   from google.colab import drive
-#   drive.mount('/content/drive', force_remount=True)
+import pandas as pd
+import numpy as np
 
-#my_ip = !curl ipecho.net/plain
+from google.cloud import storage
+
+from ipywidgets import interact, Checkbox, Button, Output, HBox, VBox, AppLayout, Label, Layout, Text, HTML, Textarea
+
+project_name = 'ListingImageClassification'
+
+home = Path('/content/drive/My Drive')
+
+if not (home/project_name).exists(): (home/project_name).mkdir()
+
+if not (home/project_name/'data').exists(): (home/project_name/'data').mkdir()
+if not (home/project_name/'training').exists(): (home/project_name/'training').mkdir()
+if not (home/project_name/'photos').exists(): (home/project_name/'photos').mkdir()
+if not (home/project_name/'tmp').exists(): (home/project_name/'tmp').mkdir()
+if not (home/project_name/'labels').exists(): (home/project_name/'labels').mkdir() 
+if not (home/project_name/'utils').exists(): (home/project_name/'utils').mkdir()
+
+data = home/project_name/'data'
+train_home = home/project_name/'training'
+photos = home/project_name/'photos'
+tmp = home/project_name/'tmp'
+labels_dir = home/project_name/'labels'
+utils_path = home/project_name/'utils'
+
+
+# setup GS, download and copy files
+storage_project_id = 'royallepage.ca:api-project-267497502775'
+storage_client = storage.Client(project=storage_project_id)
+storage_bucket = storage_client.get_bucket('ai-tests')
+
+# copy util python files
+blob = storage_bucket.blob('Labelling/utils/data_util.py')
+blob.download_to_filename(str(utils_path/'data_util.py'))
+
+blob = storage_bucket.blob('Labelling/utils/rlp_data_loader.py')
+blob.download_to_filename(str(utils_path/'rlp_data_loader.py'))
+
+blob = storage_bucket.blob('Labelling/utils/small_fastai_utils.py')
+blob.download_to_filename(str(utils_path/'small_fastai_utils.py'))
+
+blob = storage_bucket.blob('Labelling/utils/common_util.py')
+blob.download_to_filename(str(utils_path/'common_util.py'))
+
+# copy label and metadata
+blob = storage_bucket.blob('Labelling/labels/all_labels_df.csv')
+blob.download_to_filename(str(labels_dir/'all_labels_df.csv'))
+
+sys.path.insert(0, str(utils_path))
+
+from rlp_data_loader import RLPDataLoader
+from common_util import load_from_pickle, save_to_pickle, say_done
+from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_metrics, combine_history
+from common_util import ImageLabelWidget
+from small_fastai_utils import join_df
+
+from common_util import ImageDataLoader, say
 
