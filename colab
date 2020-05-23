@@ -74,6 +74,13 @@ for shard in range(10):
   blob = storage_bucket.blob(f'Labelling/data/listing_es_{shard}_df')
   blob.download_to_filename(str(data/f'listing_es_{shard}_df'))
 
+# copy 2 photos: no image and loading 
+blob = storage_bucket.blob('Labelling/photos/no_image.jpg')
+blob.download_to_filename(str(photos/'no_image.jpg'))
+blob = storage_bucket.blob('Labelling/photos/loading_image.jpg')
+blob.download_to_filename(str(photos/'loading_image.jpg'))
+
+
 sys.path.insert(0, str(utils_path))
 
 from rlp_data_loader import RLPDataLoader
