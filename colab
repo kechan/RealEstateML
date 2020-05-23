@@ -57,9 +57,22 @@ blob.download_to_filename(str(utils_path/'small_fastai_utils.py'))
 blob = storage_bucket.blob('Labelling/utils/common_util.py')
 blob.download_to_filename(str(utils_path/'common_util.py'))
 
-# copy label and metadata
+# copy label and data
 blob = storage_bucket.blob('Labelling/labels/all_labels_df.csv')
 blob.download_to_filename(str(labels_dir/'all_labels_df.csv'))
+
+blob = storage_bucket.blob('Labelling/data/new_master_listing_df.csv')
+blob.download_to_filename(str(data/'new_master_listing_df.csv'))
+
+blob = storage_bucket.blob('Labelling/data/listing_extras.pickle')
+blob.download_to_filename(str(data/'listing_extras.pickle'))
+
+blob = storage_bucket.blob('Labelling/data/listing_df')
+blob.download_to_filename(str(data/'listing_df'))
+
+for shard in range(10):
+  blob = storage_bucket.blob(f'Labelling/data/listing_es_{shard}_df')
+  blob.download_to_filename(str(data/f'listing_es_{shard}_df')
 
 sys.path.insert(0, str(utils_path))
 
