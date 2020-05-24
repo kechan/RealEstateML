@@ -40,7 +40,8 @@ labels_dir = home/project_name/'labels'
 utils_path = home/project_name/'utils'
 
 if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's jumptools.com gdrive
-
+  if not Path('/content/photos').exists(): Path('/content/photos').mkdir()
+    
   # setup GS, download and copy files
   storage_project_id = 'royallepage.ca:api-project-267497502775'
   storage_client = storage.Client(project=storage_project_id)
