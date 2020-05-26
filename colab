@@ -60,6 +60,9 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
   blob = storage_bucket.blob('Labelling/utils/common_util.py')
   blob.download_to_filename(str(utils_path/'common_util.py'))
 
+  blob = storage_bucket.blob('Labelling/utils/prefetch.py')
+  blob.download_to_filename(str(utils_path/'prefetch.py'))
+
   # copy label and data
   blob = storage_bucket.blob('Labelling/labels/all_labels_df.csv')
   blob.download_to_filename(str(labels_dir/'all_labels_df.csv'))
@@ -82,6 +85,9 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
   blob.download_to_filename(str(photos/'no_image.jpg'))
   blob = storage_bucket.blob('Labelling/photos/loading_image.jpg')
   blob.download_to_filename(str(photos/'loading_image.jpg'))
+
+  # copy prefetch.py to /content/
+  shutil.copy(utils_path/'prefetch.py', '/content/prefetch.py')
 
 
 sys.path.insert(0, str(utils_path))
