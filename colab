@@ -85,6 +85,9 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
   blob.download_to_filename(str(photos/'no_image.jpg'))
   blob = storage_bucket.blob('Labelling/photos/loading_image.jpg')
   blob.download_to_filename(str(photos/'loading_image.jpg'))
+  blob = storage_bucket.blob('Labelling/photos/404.jpg')
+  blob.download_to_filename(str(photos/'404.jpg'))
+
 
   # copy prefetch.py to /content/
   shutil.copy(utils_path/'prefetch.py', '/content/prefetch.py')
