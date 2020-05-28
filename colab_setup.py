@@ -102,7 +102,7 @@ def plotImages(images_arr):
 
 # For inline image visualization  
 
-pd.set_option('display.max_colwidth', -1)
+pd.set_option('display.max_colwidth', None)
 listingid_regex = re.compile(r'.*/(\d+)_\d+\.jpg')
 
 def get_listingId(row):
