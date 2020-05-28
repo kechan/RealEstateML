@@ -17,10 +17,10 @@ if bOnColab and not os.path.exists('/content/drive'):       # presence of /conte
   drive.mount('/content/drive')
   print('gdrive mounted')
 
-try:
-  !pip install tf-nightly --quiet
-except:
-  pass
+#try:
+#  !pip install tf-nightly --quiet
+#except:
+#  pass
 
 import pandas as pd
 import numpy as np
