@@ -61,6 +61,7 @@ plt.rcParams['font.size'] = 16
 bJumptools = False
 
 project_name = 'ListingImageClassification'
+storage_project_id = 'royallepage.ca:api-project-267497502775'
 
 if bOnColab:
   home = Path('/content/drive/My Drive')
