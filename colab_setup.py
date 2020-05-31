@@ -73,10 +73,14 @@ if bOnColab:
     tmp = home/project_name/'tmp'
     labels_dir = home/project_name/'labels'
     utils_path = home/project_name/'utils'
+    local = Path('/content')
+    local_photos = local/'photos'
   else:
     data = home/'rlp'/project_name/'data'
     train_home = home/'rlp'/project_name/'training'
     utils_path = home/'rlp'/project_name/'utils'
+    local = Path('/content')
+    local_photos = local/'photos'
 
 sys.path.insert(0, str(utils_path))
 
