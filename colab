@@ -38,6 +38,8 @@ photos = home/project_name/'photos'
 tmp = home/project_name/'tmp'
 labels_dir = home/project_name/'labels'
 utils_path = home/project_name/'utils'
+local = Path('/content')
+local_photos = local/'photos'
 
 if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's jumptools.com gdrive
   if not Path('/content/photos').exists(): Path('/content/photos').mkdir()
