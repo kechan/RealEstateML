@@ -103,5 +103,5 @@ from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_me
 from common_util import ImageLabelWidget
 from small_fastai_utils import join_df
 
-from common_util import ImageDataLoader, say
+from common_util import ImageDataLoader, populate_remarks_boolean_column, say
 
