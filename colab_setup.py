@@ -1,4 +1,5 @@
 import os, gc, sys, time, pickle, pytz, multiprocessing, h5py, glob, re, PIL, base64, shutil, random, urllib
+import tempfile
 from pathlib import *
 from datetime import date, datetime, timedelta
 from IPython.display import HTML
@@ -38,7 +39,7 @@ from tensorflow.keras.models import Sequential, Model, load_model
 from tensorflow.keras import backend as K
 
 from tensorflow.keras.layers.experimental.preprocessing import RandomFlip, RandomTranslation, RandomRotation
-from tensorflow.keras.layers.experimental.preprocessing import RandomCrop, RandomContrast
+from tensorflow.keras.layers.experimental.preprocessing import RandomCrop, RandomContrast, RandomZoom
 
 from ipywidgets import interact, Checkbox, Button, Output, HBox, VBox, AppLayout, Label, Layout, Text, Textarea
 from ipywidgets import HTML as IPyWidgetHTML     # conflict with "from IPython.display import HTML"
