@@ -42,7 +42,7 @@ from tensorflow.keras.layers.experimental.preprocessing import RandomFlip, Rando
 from tensorflow.keras.layers.experimental.preprocessing import RandomCrop, RandomContrast, RandomZoom
 
 import sklearn
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import roc_auc_score, roc_curve, confusion_matrix
 
 from ipywidgets import interact, Checkbox, Button, Output, HBox, VBox, AppLayout, Label, Layout, Text, Textarea
 from ipywidgets import HTML as IPyWidgetHTML     # conflict with "from IPython.display import HTML"
