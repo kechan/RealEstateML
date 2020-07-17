@@ -26,6 +26,7 @@ if not (home/project_name).exists(): (home/project_name).mkdir()
 
 if not (home/project_name/'data').exists(): (home/project_name/'data').mkdir()
 if not (home/project_name/'training').exists(): (home/project_name/'training').mkdir()
+(home/project_name/'training'/'error_analysis').mkdir(parents=True, exist_ok=True)
 if not (home/project_name/'photos').exists(): (home/project_name/'photos').mkdir()
 if not (home/project_name/'photos'/'restructured_full_set').exists(): (home/project_name/'photos'/'restructured_full_set').mkdir()
 if not (home/project_name/'tmp').exists(): (home/project_name/'tmp').mkdir()
@@ -93,6 +94,10 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
 
   # copy prefetch.py to /content/
   shutil.copy(utils_path/'prefetch.py', '/content/prefetch.py')
+
+  # copy predictions_df.csv
+  blob = storage_bucket.blob('Labelling/training/error_analysis/deck_patio_balcony_veranda_predictions.csv')
+  blob.download_to_filename(str(train_home/'error_analysis'/'deck_patio_balcony_veranda_predictions.csv'))
 
 
 sys.path.insert(0, str(utils_path))
