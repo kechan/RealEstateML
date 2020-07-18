@@ -108,6 +108,8 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
   blob = storage_bucket.blob('Labelling/training/error_analysis/upg_counter_predictions.csv')
   blob.download_to_filename(str(train_home/'error_analysis'/'upg_counter_predictions.csv'))
 
+  blob = storage_bucket.blob('Labelling/training/error_analysis/open_concept_predictions.csv')
+  blob.download_to_filename(str(train_home/'error_analysis'/'open_concept_predictions.csv'))
 
 
 sys.path.insert(0, str(utils_path))
