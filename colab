@@ -99,6 +99,10 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
   blob = storage_bucket.blob('Labelling/training/error_analysis/deck_patio_balcony_veranda_predictions.csv')
   blob.download_to_filename(str(train_home/'error_analysis'/'deck_patio_balcony_veranda_predictions.csv'))
 
+  blob = storage_bucket.blob('Labelling/training/error_analysis/double_sink_ss_kitchen_predictions.csv')
+  blob.download_to_filename(str(train_home/'error_analysis'/'double_sink_ss_kitchen_predictions.csv'))
+
+
 
 sys.path.insert(0, str(utils_path))
 
