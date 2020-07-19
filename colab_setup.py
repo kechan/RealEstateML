@@ -1,6 +1,7 @@
 import os, gc, sys, time, pickle, pytz, multiprocessing, h5py, glob, re, PIL, base64, shutil, random, urllib
 import tempfile
 from pathlib import *
+from functools import partial
 from datetime import date, datetime, timedelta
 from IPython.display import HTML
 from io import BytesIO
