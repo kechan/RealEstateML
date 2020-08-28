@@ -46,9 +46,13 @@ import sklearn
 from sklearn.metrics import roc_curve, roc_auc_score, average_precision_score, precision_recall_curve, confusion_matrix
 
 import cv2
+from google.colab.patches import cv2_imshow
+
 
 from ipywidgets import interact, Checkbox, Button, Output, HBox, VBox, AppLayout, Label, Layout, Text, Textarea
 from ipywidgets import HTML as IPyWidgetHTML     # conflict with "from IPython.display import HTML"
+
+# from ipywidgets import ValueWidget, CoreWidget
 
 from IPython.display import Image, Audio
 
@@ -100,7 +104,7 @@ from small_fastai_utils import join_df
 
 from common_util import ImageDataLoader, say
 from common_util import isNone_or_NaN
-from common_util import get_listingId_from_image_name, count_photos
+from common_util import image_d_hash, get_listingId_from_image_name, count_photos
 
 print("\u2022 Using TensorFlow Version:", tf.__version__)
 
