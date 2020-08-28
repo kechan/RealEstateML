@@ -104,7 +104,7 @@ from small_fastai_utils import join_df
 
 from common_util import ImageDataLoader, say
 from common_util import isNone_or_NaN
-from common_util import image_d_hash, get_listingId_from_image_name, count_photos
+from common_util import image_d_hash, get_listingId_from_image_name, count_photos, get_orig_image_name_from_cropped
 
 print("\u2022 Using TensorFlow Version:", tf.__version__)
 
