@@ -42,6 +42,8 @@ from tensorflow.keras import backend as K
 from tensorflow.keras.layers.experimental.preprocessing import RandomFlip, RandomTranslation, RandomRotation
 from tensorflow.keras.layers.experimental.preprocessing import RandomCrop, RandomContrast, RandomZoom
 
+AUTO = tf.data.experimental.AUTOTUNE
+
 import sklearn
 from sklearn.metrics import roc_curve, roc_auc_score, average_precision_score, precision_recall_curve, confusion_matrix
 
