@@ -12,7 +12,7 @@ import numpy as np
 from google.cloud import storage
 
 import tensorflow as tf
-import tensorflow_datasets as tfds
+#import tensorflow_datasets as tfds
 
 from tensorflow.keras.utils import Sequence
 
@@ -60,11 +60,11 @@ data = home/project_name/'data'
 train_home = home/project_name/'training'
 # photos = home/project_name/'photos'
 tmp = home/project_name/'tmp'
-#labels_dir = home/project_name/'labels'
+labels_dir = home/project_name/'labels'
 utils_path = home/project_name/'utils'
 models_dir = home/project_name/'model'
 #local = Path('/content')
-local_photos = home/project_name/'photos'
+local_photos = home/'photos'
 
 
 sys.path.insert(0, str(utils_path))
