@@ -63,7 +63,7 @@ tmp = home/project_name/'tmp'
 labels_dir = home/project_name/'labels'
 utils_path = home/project_name/'utils'
 models_dir = home/project_name/'model'
-#local = Path('/content')
+local = Path('/home/jupyter')
 local_photos = home/'photos'
 
 
