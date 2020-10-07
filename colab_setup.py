@@ -96,17 +96,20 @@ if bOnColab:
     local = Path('/content')
     local_photos = local/'photos'
 
-sys.path.insert(0, str(utils_path))
+try:
+  sys.path.insert(0, str(utils_path))
 
-from rlp_data_loader import RLPDataLoader
-from common_util import load_from_pickle, save_to_pickle, say_done
-from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_metrics, combine_history
-from common_util import ImageLabelWidget
-from small_fastai_utils import join_df
+  from rlp_data_loader import RLPDataLoader
+  from common_util import load_from_pickle, save_to_pickle, say_done
+  from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_metrics, combine_history
+  from common_util import ImageLabelWidget
+  from small_fastai_utils import join_df
 
-from common_util import ImageDataLoader, say
-from common_util import isNone_or_NaN
-from common_util import image_d_hash, get_listingId_from_image_name, count_photos, get_orig_image_name_from_cropped
+  from common_util import ImageDataLoader, say
+  from common_util import isNone_or_NaN
+  from common_util import image_d_hash, get_listingId_from_image_name, count_photos, get_orig_image_name_from_cropped
+except:
+  print("Not installing rlp_dataloader, common_util and small_fastai_utils")
 
 print("\u2022 Using TensorFlow Version:", tf.__version__)
 
