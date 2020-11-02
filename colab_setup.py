@@ -1,4 +1,4 @@
-import os, gc, sys, time, pickle, pytz, multiprocessing, h5py, glob, re, PIL, base64, shutil, random, urllib
+import os, gc, sys, time, pickle, pytz, multiprocessing, h5py, glob, re, PIL, base64, shutil, random, urllib, hashlib
 import tempfile
 from pathlib import *
 from functools import partial
