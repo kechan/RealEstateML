@@ -78,6 +78,7 @@ bJumptools = False
 
 project_name = 'ListingImageClassification'
 storage_project_id = 'royallepage.ca:api-project-267497502775'
+bq_project_id = 'rlpdotca'
 
 if bOnColab:
   home = Path('/content/drive/My Drive')
@@ -103,6 +104,7 @@ try:
   sys.path.insert(0, str(utils_path))
 
   from rlp_data_loader import RLPDataLoader
+  from rlp_listing_data_loader import RLPListingDataLoader
   from common_util import load_from_pickle, save_to_pickle, say_done
   from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_metrics, combine_history
   from common_util import ImageLabelWidget
@@ -110,7 +112,8 @@ try:
 
   from common_util import ImageDataLoader, say
   from common_util import isNone_or_NaN
-  from common_util import image_d_hash, get_listingId_from_image_name, count_photos, get_orig_image_name_from_cropped
+  from common_util import image_d_hash
+  from common_util import get_listingId_from_image_name, count_photos, get_orig_image_name_from_cropped
 except:
   print("Not installing rlp_dataloader, common_util and small_fastai_utils")
 
