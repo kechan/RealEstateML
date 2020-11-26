@@ -99,6 +99,17 @@ if bOnColab:
     utils_path = home/'rlp'/project_name/'utils'
     local = Path('/content')
     local_photos = local/'photos'
+else:
+  home = Path('/Users/kelvinchan/Google Drive (kelvin@jumptools.com)')
+  data = home/project_name/'data'
+  train_home = home/project_name/'training'
+  photos = home/project_name/'photos'
+  tmp = home/project_name/'tmp'
+  labels_dir = home/project_name/'labels'
+  utils_path = home/project_name/'utils'
+  models_dir = home/project_name/'model'
+  local = Path('/Users/kelvinchan/Documents/RoyalLePage')
+  local_photos = local/'photos'
 
 try:
   sys.path.insert(0, str(utils_path))
