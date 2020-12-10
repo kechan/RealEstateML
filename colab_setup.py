@@ -93,6 +93,8 @@ if bOnColab:
     models_dir = home/project_name/'model'
     local = Path('/content')
     local_photos = local/'photos'
+
+    gs_data = Path('ai-tests')/project_name/'data'
   else:
     data = home/'rlp'/project_name/'data'
     train_home = home/'rlp'/project_name/'training'
@@ -110,6 +112,8 @@ else:
   models_dir = home/project_name/'model'
   local = Path('/Users/kelvinchan/Documents/RoyalLePage')
   local_photos = local/'photos'
+
+  gs_data = Path('ai-tests')/project_name/'data'
 
 try:
   sys.path.insert(0, str(utils_path))
