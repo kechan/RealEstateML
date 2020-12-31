@@ -51,7 +51,8 @@ import sklearn
 from sklearn.metrics import roc_curve, roc_auc_score, average_precision_score, precision_recall_curve, confusion_matrix
 
 import cv2
-from google.colab.patches import cv2_imshow
+if bOnColab:
+  from google.colab.patches import cv2_imshow
 
 
 from ipywidgets import interact, Checkbox, Button, Output, HBox, VBox, AppLayout, Label, Layout, Text, Textarea
