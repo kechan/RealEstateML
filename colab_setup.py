@@ -36,10 +36,11 @@ import tensorflow_datasets as tfds
 from tensorflow.keras.utils import Sequence
 
 from tensorflow.keras.layers import Dense, Input, Embedding, LSTM, Reshape, Dropout, Activation, Dot
-from tensorflow.keras.layers import GlobalAveragePooling2D, Concatenate
+from tensorflow.keras.layers import GlobalAveragePooling1D, GlobalAveragePooling2D, Concatenate
 from tensorflow.keras.models import Sequential, Model, load_model
 from tensorflow.keras import backend as K
 
+from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
 from tensorflow.keras.layers.experimental.preprocessing import Rescaling
 from tensorflow.keras.layers.experimental.preprocessing import RandomFlip, RandomTranslation, RandomRotation
 from tensorflow.keras.layers.experimental.preprocessing import RandomCrop, RandomContrast, RandomZoom
