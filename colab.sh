@@ -7,7 +7,11 @@
 #        rm -rf /content/sample_data/
 #fi
 
-echo Updating tensorflow to nightly...
-pip install tf-nightly --quiet > /dev/null
-echo Done.
+#echo Updating tensorflow to nightly...
+#pip install tf-nightly --quiet > /dev/null
+#echo Done.
+
+echo Installing vi
+sudo apt-get install vim
+echo Done
 
