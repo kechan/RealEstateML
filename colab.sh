@@ -12,6 +12,6 @@
 #echo Done.
 
 echo Installing vi
-sudo apt-get install vim
+sudo apt-get -qq install vim
 echo Done
 
