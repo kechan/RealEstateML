@@ -84,7 +84,7 @@ storage_project_id = 'royallepage.ca:api-project-267497502775'
 bq_project_id = 'rlpdotca'
 
 if bOnColab:
-  home = Path('/content/drive/My Drive')
+  home = Path('/content/drive/MyDrive')
   if (home/'jumptools.com').exists(): bJumptools = True
   if bJumptools:
     data = home/project_name/'data'
