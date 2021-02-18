@@ -130,7 +130,7 @@ try:
 
   from common_util import ImageDataLoader, say
   from common_util import isNone_or_NaN
-  from common_util import image_d_hash
+  from common_util import image_d_hash, tf_image_d_hash
   from common_util import get_listingId_from_image_name, count_photos, get_orig_image_name_from_cropped
 except:
   print("Not installing rlp_dataloader, common_util and small_fastai_utils")
