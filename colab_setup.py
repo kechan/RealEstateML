@@ -126,7 +126,7 @@ try:
   from common_util import load_from_pickle, save_to_pickle, say_done
   from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_metrics, combine_history
   from common_util import ImageLabelWidget
-  from small_fastai_utils import join_df
+  from small_fastai_utils import join_df, join_filter_drop_df, tf_dataset_peek
 
   from common_util import ImageDataLoader, say
   from common_util import isNone_or_NaN
