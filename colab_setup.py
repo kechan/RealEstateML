@@ -126,13 +126,15 @@ try:
   from common_util import load_from_pickle, save_to_pickle, say_done
   from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_metrics, combine_history
   from common_util import ImageLabelWidget
-  from small_fastai_utils import join_df, join_filter_drop_df, tf_dataset_peek
+  from small_fastai_utils import join_df 
 
   from common_util import ImageDataLoader, say
   from common_util import isNone_or_NaN
   from common_util import image_d_hash, tf_image_d_hash
   from common_util import get_listingId_from_image_name, count_photos, get_orig_image_name_from_cropped
-except:
+  from common_util import join_filter_drop_df, tf_dataset_peek
+except Exception as e:
+  print(e)
   print("Not installing rlp_dataloader, common_util and small_fastai_utils")
 
 print("\u2022 Using TensorFlow Version:", tf.__version__)
