@@ -85,6 +85,9 @@ bq_project_id = 'rlpdotca'
 
 if bOnColab:
   home = Path('/content/drive/MyDrive')
+  local = Path('/content')
+  local_photos = local/'photos'
+
   if (home/'jumptools.com').exists(): bJumptools = True
   if bJumptools:
     data = home/project_name/'data'
@@ -94,16 +97,16 @@ if bOnColab:
     labels_dir = home/project_name/'labels'
     utils_path = home/project_name/'utils'
     models_dir = home/project_name/'model'
-    local = Path('/content')
-    local_photos = local/'photos'
 
     gs_data = Path('ai-tests')/project_name/'data'
   else:
     data = home/'rlp'/project_name/'data'
     train_home = home/'rlp'/project_name/'training'
     utils_path = home/'rlp'/project_name/'utils'
-    local = Path('/content')
-    local_photos = local/'photos'
+    tmp = home/'rlp'/project_name/'tmp'
+    labels_dir = home/'rlp'/project_name/'labels'
+    models_dir = home/'rlp'/project_name/'model'
+
 else:
   home = Path('/Users/kelvinchan/Google Drive (kelvin@jumptools.com)')
   data = home/project_name/'data'
