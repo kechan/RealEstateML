@@ -128,7 +128,7 @@ try:
   from rlp_listing_data_loader import RLPListingDataLoader
   from common_util import load_from_pickle, save_to_pickle, say_done
   from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_metrics, combine_history
-  from common_util import ImageLabelWidget
+  #from common_util import ImageLabelWidget
   from small_fastai_utils import join_df 
 
   from common_util import ImageDataLoader, say
