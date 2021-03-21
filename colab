@@ -28,7 +28,6 @@ if not (home/project_name/'data').exists(): (home/project_name/'data').mkdir()
 if not (home/project_name/'training').exists(): (home/project_name/'training').mkdir()
 (home/project_name/'training'/'error_analysis').mkdir(parents=True, exist_ok=True)
 if not (home/project_name/'photos').exists(): (home/project_name/'photos').mkdir()
-if not (home/project_name/'photos'/'restructured_full_set').exists(): (home/project_name/'photos'/'restructured_full_set').mkdir()
 if not (home/project_name/'tmp').exists(): (home/project_name/'tmp').mkdir()
 if not (home/project_name/'labels').exists(): (home/project_name/'labels').mkdir() 
 if not (home/project_name/'utils').exists(): (home/project_name/'utils').mkdir()
@@ -51,37 +50,47 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
   storage_bucket = storage_client.get_bucket('ai-tests')
 
   # copy util python files
-  blob = storage_bucket.blob('Labelling/utils/data_util.py')
-  blob.download_to_filename(str(utils_path/'data_util.py'))
+  #blob = storage_bucket.blob('Labelling/utils/data_util.py')
+  #blob.download_to_filename(str(utils_path/'data_util.py'))
 
-  blob = storage_bucket.blob('Labelling/utils/rlp_data_loader.py')
-  blob.download_to_filename(str(utils_path/'rlp_data_loader.py'))
+  #blob = storage_bucket.blob('Labelling/utils/rlp_data_loader.py')
+  #blob.download_to_filename(str(utils_path/'rlp_data_loader.py'))
 
-  blob = storage_bucket.blob('Labelling/utils/small_fastai_utils.py')
-  blob.download_to_filename(str(utils_path/'small_fastai_utils.py'))
+  #blob = storage_bucket.blob('Labelling/utils/small_fastai_utils.py')
+  #blob.download_to_filename(str(utils_path/'small_fastai_utils.py'))
 
   blob = storage_bucket.blob('Labelling/utils/common_util.py')
   blob.download_to_filename(str(utils_path/'common_util.py'))
 
-  blob = storage_bucket.blob('Labelling/utils/prefetch.py')
-  blob.download_to_filename(str(utils_path/'prefetch.py'))
+  blob = storage_bucket.blob('Labelling/utils/labeller.py')
+  blob.download_to_filename(str(utils_path/'labeller.py'))
+
+  #blob = storage_bucket.blob('Labelling/utils/prefetch.py')
+  #blob.download_to_filename(str(utils_path/'prefetch.py'))
 
   # copy label and data
-  blob = storage_bucket.blob('Labelling/labels/all_labels_df.csv')
-  blob.download_to_filename(str(labels_dir/'all_labels_df.csv'))
 
-  blob = storage_bucket.blob('Labelling/data/new_master_listing_df.csv')
-  blob.download_to_filename(str(data/'new_master_listing_df.csv'))
+  blob = storage_bucket.blob('Labelling/labels/jgm_exteriors_labels_df.csv')
+  blob.download_to_filename(str(labels_dir/'jgm_exteriors_labels_df.csv'))
 
-  blob = storage_bucket.blob('Labelling/data/listing_extras.pickle')
-  blob.download_to_filename(str(data/'listing_extras.pickle'))
+  blob = storage_bucket.blob('Labelling/labels/sy_exteriors_labels_df.csv')
+  blob.download_to_filename(str(labels_dir/'sy_exteriors_labels_df.csv'))
 
-  blob = storage_bucket.blob('Labelling/data/listing_df')
-  blob.download_to_filename(str(data/'listing_df'))
+  #blob = storage_bucket.blob('Labelling/labels/all_labels_df.csv')
+  #blob.download_to_filename(str(labels_dir/'all_labels_df.csv'))
 
-  for shard in range(10):
-    blob = storage_bucket.blob(f'Labelling/data/listing_es_{shard}_df')
-    blob.download_to_filename(str(data/f'listing_es_{shard}_df'))
+  #blob = storage_bucket.blob('Labelling/data/new_master_listing_df.csv')
+  #blob.download_to_filename(str(data/'new_master_listing_df.csv'))
+
+  #blob = storage_bucket.blob('Labelling/data/listing_extras.pickle')
+  #blob.download_to_filename(str(data/'listing_extras.pickle'))
+
+  #blob = storage_bucket.blob('Labelling/data/listing_df')
+  #blob.download_to_filename(str(data/'listing_df'))
+
+  #for shard in range(10):
+  #  blob = storage_bucket.blob(f'Labelling/data/listing_es_{shard}_df')
+  #  blob.download_to_filename(str(data/f'listing_es_{shard}_df'))
 
   # copy 2 photos: no image and loading 
   blob = storage_bucket.blob('Labelling/photos/no_image.jpg')
@@ -93,39 +102,41 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
 
 
   # copy prefetch.py to /content/
-  shutil.copy(utils_path/'prefetch.py', '/content/prefetch.py')
+  # shutil.copy(utils_path/'prefetch.py', '/content/prefetch.py')
 
   # copy predictions_df.csv
-  blob = storage_bucket.blob('Labelling/training/error_analysis/deck_patio_balcony_veranda_predictions.csv')
-  blob.download_to_filename(str(train_home/'error_analysis'/'deck_patio_balcony_veranda_predictions.csv'))
+  #blob = storage_bucket.blob('Labelling/training/error_analysis/deck_patio_balcony_veranda_predictions.csv')
+  #blob.download_to_filename(str(train_home/'error_analysis'/'deck_patio_balcony_veranda_predictions.csv'))
 
-  blob = storage_bucket.blob('Labelling/training/error_analysis/double_sink_ss_kitchen_predictions.csv')
-  blob.download_to_filename(str(train_home/'error_analysis'/'double_sink_ss_kitchen_predictions.csv'))
+  #blob = storage_bucket.blob('Labelling/training/error_analysis/double_sink_ss_kitchen_predictions.csv')
+  #blob.download_to_filename(str(train_home/'error_analysis'/'double_sink_ss_kitchen_predictions.csv'))
 
-  blob = storage_bucket.blob('Labelling/training/error_analysis/hw_floor_predictions.csv')
-  blob.download_to_filename(str(train_home/'error_analysis'/'hw_floor_predictions.csv'))
+  #blob = storage_bucket.blob('Labelling/training/error_analysis/hw_floor_predictions.csv')
+  #blob.download_to_filename(str(train_home/'error_analysis'/'hw_floor_predictions.csv'))
 
-  blob = storage_bucket.blob('Labelling/training/error_analysis/upg_counter_predictions.csv')
-  blob.download_to_filename(str(train_home/'error_analysis'/'upg_counter_predictions.csv'))
+  #blob = storage_bucket.blob('Labelling/training/error_analysis/upg_counter_predictions.csv')
+  #blob.download_to_filename(str(train_home/'error_analysis'/'upg_counter_predictions.csv'))
 
-  blob = storage_bucket.blob('Labelling/training/error_analysis/open_concept_predictions.csv')
-  blob.download_to_filename(str(train_home/'error_analysis'/'open_concept_predictions.csv'))
+  #blob = storage_bucket.blob('Labelling/training/error_analysis/open_concept_predictions.csv')
+  #blob.download_to_filename(str(train_home/'error_analysis'/'open_concept_predictions.csv'))
 
-  blob = storage_bucket.blob('Labelling/training/error_analysis/pool_water_predictions.csv')
-  blob.download_to_filename(str(train_home/'error_analysis'/'pool_water_predictions.csv'))
+  #blob = storage_bucket.blob('Labelling/training/error_analysis/pool_water_predictions.csv')
+  #blob.download_to_filename(str(train_home/'error_analysis'/'pool_water_predictions.csv'))
   
-  blob = storage_bucket.blob('Labelling/training/error_analysis/fireplace_predictions.csv')
-  blob.download_to_filename(str(train_home/'error_analysis'/'fireplace_predictions.csv'))
+  #blob = storage_bucket.blob('Labelling/training/error_analysis/fireplace_predictions.csv')
+  #blob.download_to_filename(str(train_home/'error_analysis'/'fireplace_predictions.csv'))
 
 
 
 sys.path.insert(0, str(utils_path))
 
-from rlp_data_loader import RLPDataLoader
+#from rlp_data_loader import RLPDataLoader
 from common_util import load_from_pickle, save_to_pickle, say_done
 from common_util import plot_training_loss, plot_loss_accuracy, plot_loss_and_metrics, combine_history
-from common_util import ImageLabelWidget
-from small_fastai_utils import join_df
+#from common_util import ImageLabelWidget 
+from labeller import ImageLabelWidget
 
-from common_util import ImageDataLoader, populate_remarks_boolean_column, say
+#from small_fastai_utils import join_df
+
+#from common_util import ImageDataLoader, populate_remarks_boolean_column, say
 
