@@ -20,7 +20,7 @@ from ipywidgets import interact, Checkbox, Button, Output, HBox, VBox, AppLayout
 
 project_name = 'ListingImageClassification'
 
-home = Path('/content/drive/My Drive')
+home = Path('/content/drive/MyDrive')
 
 if not (home/project_name).exists(): (home/project_name).mkdir()
 
