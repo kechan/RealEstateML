@@ -56,8 +56,8 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
   #blob = storage_bucket.blob('Labelling/utils/rlp_data_loader.py')
   #blob.download_to_filename(str(utils_path/'rlp_data_loader.py'))
 
-  #blob = storage_bucket.blob('Labelling/utils/small_fastai_utils.py')
-  #blob.download_to_filename(str(utils_path/'small_fastai_utils.py'))
+  blob = storage_bucket.blob('Labelling/utils/small_fastai_utils.py')
+  blob.download_to_filename(str(utils_path/'small_fastai_utils.py'))
 
   blob = storage_bucket.blob('Labelling/utils/common_util.py')
   blob.download_to_filename(str(utils_path/'common_util.py'))
