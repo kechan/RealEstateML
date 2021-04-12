@@ -76,6 +76,13 @@ if not (home/'jumptools.com').exists():   # don't do this if this is kelvin's ju
   blob = storage_bucket.blob('Labelling/labels/orig_sy_exteriors_labels_df.csv')
   blob.download_to_filename(str(labels_dir/'orig_sy_exteriors_labels_df.csv'))
 
+  blob = storage_bucket.blob('Labelling/labels/orig_jgm_snow_exteriors_labels_df.csv')
+  blob.download_to_filename(str(labels_dir/'orig_jgm_snow_exteriors_labels_df.csv'))
+
+  blob = storage_bucket.blob('Labelling/labels/orig_sy_snow_exteriors_labels_df.csv')
+  blob.download_to_filename(str(labels_dir/'orig_sy_snow_exteriors_labels_df.csv'))
+
+
   #blob = storage_bucket.blob('Labelling/labels/all_labels_df.csv')
   #blob.download_to_filename(str(labels_dir/'all_labels_df.csv'))
 
