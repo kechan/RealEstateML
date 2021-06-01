@@ -79,6 +79,7 @@ plt.rcParams['font.size'] = 16
 
 bJumptools = False
 
+base_project_name = 'ListingImageClassification'    # use the same utils as this project
 project_name = 'LeadCaptureSpam'
 storage_project_id = 'royallepage.ca:api-project-267497502775'
 bq_project_id = 'rlpdotca'
@@ -92,17 +93,18 @@ if bOnColab:
   if bJumptools:
     data = home/project_name/'data'
     train_home = home/project_name/'training'
-    photos = home/project_name/'photos'
     tmp = home/project_name/'tmp'
     labels_dir = home/project_name/'labels'
-    utils_path = home/project_name/'utils'
+
+    utils_path = home/base_project_name/'utils'
+
     models_dir = home/project_name/'model'
 
     gs_data = Path('ai-tests')/project_name/'data'
   else:
     data = home/'rlp'/project_name/'data'
     train_home = home/'rlp'/project_name/'training'
-    utils_path = home/'rlp'/project_name/'utils'
+    utils_path = home/'rlp'/base_project_name/'utils'
     tmp = home/'rlp'/project_name/'tmp'
     labels_dir = home/'rlp'/project_name/'labels'
     models_dir = home/'rlp'/project_name/'model'
@@ -111,10 +113,11 @@ else:
   home = Path('/Users/kelvinchan/Google Drive (kelvin@jumptools.com)')
   data = home/project_name/'data'
   train_home = home/project_name/'training'
-  photos = home/project_name/'photos'
   tmp = home/project_name/'tmp'
   labels_dir = home/project_name/'labels'
-  utils_path = home/project_name/'utils'
+
+  utils_path = home/base_project_name/'utils'
+
   models_dir = home/project_name/'model'
   local = Path('/Users/kelvinchan/Documents/RoyalLePage')
   local_photos = local/'photos'
