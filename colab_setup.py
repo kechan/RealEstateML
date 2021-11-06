@@ -1,6 +1,7 @@
 import os, gc, sys, time, pickle, pytz, multiprocessing, h5py, glob, re, PIL, base64, shutil, random, urllib, hashlib
 import tempfile
 import string
+import requests
 from pathlib import *
 from functools import partial
 from datetime import date, datetime, timedelta
@@ -182,3 +183,6 @@ def image_formatter(im):
 def sigmoid(x):
   return 1./(1. + np.exp(-x))
 
+
+def get_notebook_name():
+  return requests.get('http://172.28.0.2:9000/api/sessions').json()[0]['name']
