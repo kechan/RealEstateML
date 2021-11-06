@@ -183,6 +183,12 @@ def image_formatter(im):
 def sigmoid(x):
   return 1./(1. + np.exp(-x))
 
-
 def get_notebook_name():
   return requests.get('http://172.28.0.2:9000/api/sessions').json()[0]['name']
+
+
+def tmp_subdir():
+  tmpdir = tmp/('.'+Path(get_notebook_name()).stem)
+  if not tmpdir.exists(): tmpdir.mkdir()
+
+  return tmpdir
