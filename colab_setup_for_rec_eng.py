@@ -1,4 +1,4 @@
-import os, sys, time, glob, re, urllib, smtplib, gc, pickle, random
+import os, sys, time, glob, re, urllib, smtplib, gc, pickle, random, requests
 from functools import partial
 from pathlib import Path
 from email.mime.multipart import MIMEMultipart
@@ -178,6 +178,21 @@ def to_int(x):
 def get_listingId(row):
   idx = row.name
   return listingid_regex.match(str(dev_idx_filenames[idx])).group(1)
+
+
+def aggregate_data(user_shards, table_name, chkpt_name):
+  '''
+  Concat all data for that table for users in user_shards
+
+  user_shards is a list of integer (the user shard #)
+  '''
+  dfs = []
+  for k in user_shards:
+    dataset_id = "combined_user_{}_frac_0.01".format(k)
+    df = rlp_dataloader.load_checkpt(dataset_id=dataset_id, chkpt=chkpt_name, table_name=table_name)[0]
+    dfs.append(df)
+
+  return pd.concat(dfs, axis=0)
 
 
 def sigmoid(x):
