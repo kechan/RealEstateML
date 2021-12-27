@@ -1,4 +1,4 @@
-import os, sys, time, glob, re, urllib, smtplib, gc, pickle, random, requests
+import os, sys, time, glob, re, urllib, smtplib, gc, pickle, random, requests, shutil
 from functools import partial
 from pathlib import Path
 from email.mime.multipart import MIMEMultipart
@@ -7,7 +7,10 @@ from datetime import date, datetime, timedelta
 from itertools import product, filterfalse, combinations
 
 def onColab(): return os.path.exists('/content')
+def onGCP(): return os.path.exists('/home/jupyter')
+
 bOnColab = onColab()
+bOnGCP = onGCP()
 
 if bOnColab:
   from google.colab import auth
