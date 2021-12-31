@@ -41,10 +41,10 @@ from tensorflow.keras.layers import GlobalAveragePooling1D, GlobalAveragePooling
 from tensorflow.keras.models import Sequential, Model, load_model
 from tensorflow.keras import backend as K
 
-from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
-from tensorflow.keras.layers.experimental.preprocessing import Rescaling
-from tensorflow.keras.layers.experimental.preprocessing import RandomFlip, RandomTranslation, RandomRotation
-from tensorflow.keras.layers.experimental.preprocessing import RandomCrop, RandomContrast, RandomZoom
+from tensorflow.keras.layers import TextVectorization
+from tensorflow.keras.layers import Rescaling
+from tensorflow.keras.layers import RandomFlip, RandomTranslation, RandomRotation
+from tensorflow.keras.layers import RandomCrop, RandomContrast, RandomZoom
 
 from tensorflow.keras.applications import ResNet50
 
