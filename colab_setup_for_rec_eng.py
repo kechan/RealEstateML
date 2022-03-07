@@ -213,9 +213,3 @@ def tmp_subdir():
   return tmpdir
 
 
-def del_and_gc(var_):
-  try:
-    del var_
-  except:
-    pass
-  gc.collect()
