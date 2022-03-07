@@ -44,4 +44,17 @@ if bOnColab:
   tmp = home/project_name/'tmp'
 
 
+try:
+  sys.path.insert(0, str(utils_path))
+
+  from common_util import load_from_pickle, save_to_pickle
+
+  from common_util import isNone_or_NaN
+
+  from common_util import get_listingId_from_image_name
+
+  from small_fastai_utils import join_df
+
+except Exception as e:
+  print(e)
   
