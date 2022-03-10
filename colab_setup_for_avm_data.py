@@ -22,6 +22,9 @@ import pandas as pd
 import numpy as np
 from pandas.api.types import CategoricalDtype, is_string_dtype, is_numeric_dtype, is_bool_dtype
 
+from functools import partialmethod
+pd.DataFrame.q_py = partialmethod(pd.DataFrame.query, engine='python')
+
 from google.cloud import storage
 
 import matplotlib as mpl
@@ -42,6 +45,9 @@ if bOnColab:
   utils_path = home/project_name/'utils'
   data = home/project_name/'data'
   tmp = home/project_name/'tmp'
+else:
+  home = Path('/Users/kelvinchan/Google Drive (kelvin@jumptools.com)')
+  utils_path = home/project_name/'utils'
 
 
 try:
