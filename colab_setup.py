@@ -27,6 +27,9 @@ if bOnColab and not os.path.exists('/content/drive'):       # presence of /conte
 #  pass
 
 import pandas as pd
+from functools import partialmethod
+pd.DataFrame.q_py = partialmethod(pd.DataFrame.query, engine='python')
+
 import numpy as np
 
 from google.cloud import storage
