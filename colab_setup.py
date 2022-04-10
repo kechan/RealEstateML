@@ -56,10 +56,13 @@ AUTO = tf.data.experimental.AUTOTUNE
 import sklearn
 from sklearn.metrics import roc_curve, roc_auc_score, average_precision_score, precision_recall_curve, confusion_matrix
 
-import cv2
-if bOnColab:
-  from google.colab.patches import cv2_imshow
-
+try:
+  import cv2
+  if bOnColab:
+    from google.colab.patches import cv2_imshow
+except Exception as e:
+  print(e)
+  print("Not importing cv2. Investigate this if this is needed. This can happen if huggingface is installed.")
 
 from ipywidgets import interact, Checkbox, Button, Output, HBox, VBox, AppLayout, Label, Layout, Text, Textarea
 from ipywidgets import HTML as IPyWidgetHTML     # conflict with "from IPython.display import HTML"
