@@ -116,7 +116,8 @@ if bOnColab:
     models_dir = home/'rlp'/project_name/'model'
 
 else:
-  home = Path('/Users/kelvinchan/Google Drive (kelvin@jumptools.com)')
+  # home = Path('/Users/kelvinchan/Google Drive (kelvin@jumptools.com)')
+  home = Path('/Users/kelvinchan/kelvin@jumptools.com - Google Drive/My Drive')
   data = home/project_name/'data'
   train_home = home/project_name/'training'
   photos = home/project_name/'photos'
