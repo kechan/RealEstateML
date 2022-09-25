@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 bOnColab = Path('/content').exists()
@@ -21,7 +22,8 @@ if len([p for p in sys.path if 'AVMDataAnalysis' in p]) == 0: sys.path.insert(0,
 if bOnColab:
   if len([p for p in sys.path if 'TFRecordHelper' in p]) == 0:
     try: 
-      !git clone https://github.com/kechan/TFRecordHelper.git      
+      # !git clone https://github.com/kechan/TFRecordHelper.git      
+      os.system(git clone https://github.com/kechan/TFRecordHelper.git)      
     except: pass
     sys.path.insert(0, 'TFRecordHelper')
 
