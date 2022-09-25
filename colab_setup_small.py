@@ -1,4 +1,8 @@
-import os
+# To be used in colab:
+# !curl -s -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/kechan/RealEstateML/master/colab_setup_small.py > colab_setup_small.py
+# %run colab_setup_small.py
+
+import os, sys
 from pathlib import Path
 
 bOnColab = Path('/content').exists()
@@ -23,7 +27,7 @@ if bOnColab:
   if len([p for p in sys.path if 'TFRecordHelper' in p]) == 0:
     try: 
       # !git clone https://github.com/kechan/TFRecordHelper.git      
-      os.system(git clone https://github.com/kechan/TFRecordHelper.git)      
+      os.system("git clone https://github.com/kechan/TFRecordHelper.git")      
     except: pass
     sys.path.insert(0, 'TFRecordHelper')
 
