@@ -16,6 +16,8 @@ if bOnColab:
 else:
   home = Path('/Users/kelvinchan/kelvin@jumptools.com - Google Drive/My Drive')
 
+if bOnColab:
+  os.system("pip -q install pyfarmhash")
 
 if len([p for p in sys.path if 'realestate-core' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-core'))
 if len([p for p in sys.path if 'realestate-nlp' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-nlp'))
