@@ -45,3 +45,8 @@ from realestate_vision.common.modules import *
 if bOnColab:
   try: shutil.rmtree(Path('/content/sample_data'))
   except: print('/content/sample_data not found.')
+
+def authenticate_user():
+  if bOnColab:
+    from google.colab import auth
+    auth.authenticate_user() 
