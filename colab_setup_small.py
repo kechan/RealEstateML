@@ -2,7 +2,7 @@
 # !curl -s -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/kechan/RealEstateML/master/colab_setup_small.py > colab_setup_small.py
 # %run colab_setup_small.py
 
-import os, sys
+import os, shutil, sys
 from pathlib import Path
 
 bOnColab = Path('/content').exists()
