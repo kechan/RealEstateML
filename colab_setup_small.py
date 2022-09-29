@@ -50,3 +50,5 @@ def authenticate_user():
   if bOnColab:
     from google.colab import auth
     auth.authenticate_user() 
+
+os.environ["KERAS_SD_HOME"] = str(home/'Keras_SD')
