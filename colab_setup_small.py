@@ -4,6 +4,7 @@
 
 import os, shutil, sys
 from pathlib import Path
+from google.cloud import storage
 
 bOnColab = Path('/content').exists()
 
@@ -60,8 +61,36 @@ if bOnColab:
   except: print('/content/sample_data not found.')
 
 def authenticate_user():
-  if bOnColab:
-    from google.colab import auth
-    auth.authenticate_user() 
+  from google.colab import auth
+  auth.authenticate_user() 
+
+def get_GOOGLE_APPLICATION_CREDENTIALS():
+  import os; 
+  return os.environ['GOOGLE_APPLICATION_CREDENTIALS']
 
 os.environ["KERAS_SD_HOME"] = str(home/'Keras_SD')
+
+# GCP Cloud Storage
+gcp_storage_project_id = 'royallepage.ca:api-project-267497502775'
+storage_client = storage.Client(project=gcp_storage_project_id)
+try:
+  bucket = storage_client.get_bucket('ai-tests')
+except:
+  bucket = None
+
+def download_from_gcs(blob_path: str, dest_dir: str = None, debug=False):
+  try:
+    blob = bucket.blob(blob_path)
+    if dest_dir is None:
+      # download to local and use the same filename
+      target_path = str(Path(blob_path).name)
+    else:
+      target_path = str(Path(dest_dir)/Path(blob_path).name)
+
+    blob.download_to_filename(target_path)
+  except Exception as ex:
+    if debug:
+      raise   
+    else:
+      print('Something has gone wrong. Please debug.')
+    
