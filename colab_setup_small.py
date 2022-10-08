@@ -7,6 +7,7 @@ from pathlib import Path
 from google.cloud import storage
 
 bOnColab = Path('/content').exists()
+bOnKaggle = Path('/kaggle/').exists()
 
 if bOnColab and not Path('/content/drive').exists():
   from google.colab import drive
@@ -14,6 +15,8 @@ if bOnColab and not Path('/content/drive').exists():
 
 if bOnColab:
   home = Path('/content/drive/MyDrive')
+elif bOnKaggle:
+  home = Path('/kaggle/working')
 else:
   home = Path('/Users/kelvinchan/kelvin@jumptools.com - Google Drive/My Drive')
 
@@ -26,6 +29,8 @@ if (home/'Developer').exists():
   if len([p for p in sys.path if 'realestate-vision' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-vision'))
   if len([p for p in sys.path if 'realestate-vision-nlp' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-vision-nlp'))
   if len([p for p in sys.path if 'AVMDataAnalysis' in p]) == 0: sys.path.insert(0, str(home/'AVMDataAnalysis'/'monitoring'))
+elif bOnKaggle:
+  os.system('pip install git+https://github.com/kechan/realestate-core')
 else:
   # git clone all (except AVMDataAnalysis) 
   os.system('git clone https://github.com/kechan/realestate-core.git')
