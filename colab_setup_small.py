@@ -31,6 +31,9 @@ if (home/'Developer').exists():
   if len([p for p in sys.path if 'AVMDataAnalysis' in p]) == 0: sys.path.insert(0, str(home/'AVMDataAnalysis'/'monitoring'))
 elif bOnKaggle:
   os.system('pip install git+https://github.com/kechan/realestate-core')
+  os.system('pip install git+https://github.com/kechan/realestate-vision')
+  os.system('pip install git+https://github.com/kechan/realestate-nlp')
+  os.system('pip install git+https://github.com/kechan/realestate-vision-nlp')
 else:
   # git clone all (except AVMDataAnalysis) 
   os.system('git clone https://github.com/kechan/realestate-core.git')
