@@ -8,6 +8,7 @@ from google.cloud import storage
 
 bOnColab = Path('/content').exists()
 bOnKaggle = Path('/kaggle/').exists()
+bOnGCPVM = Path('/home/jupyter').exists()
 
 if bOnColab and not Path('/content/drive').exists():
   from google.colab import drive
@@ -17,6 +18,8 @@ if bOnColab:
   home = Path('/content/drive/MyDrive')
 elif bOnKaggle:
   home = Path('/kaggle/working')
+elif bOnGCPVM:
+  home = Path('/home/jupyter')
 else:
   home = Path('/Users/kelvinchan/kelvin@jumptools.com - Google Drive/My Drive')
 
@@ -37,6 +40,8 @@ elif bOnKaggle:
   os.system('pip -q install git+https://github.com/kechan/realestate-vision')
   os.system('pip -q install git+https://github.com/kechan/realestate-nlp')
   os.system('pip -q install git+https://github.com/kechan/realestate-vision-nlp')
+elif bOnGCPVM:
+  pass   # pip install manually, env is persistent 
 else:
   # git clone all (except AVMDataAnalysis) 
   os.system('git clone https://github.com/kechan/realestate-core.git')
@@ -57,7 +62,10 @@ if bOnColab:
       os.system("git clone https://github.com/kechan/TFRecordHelper.git")      
     except: pass
     sys.path.insert(0, 'TFRecordHelper')
-
+elif bOnKaggle:
+  os.system("pip -q install git+https://github.com/kechan/TFRecordHelper")
+elif bOnGCPVM:
+  pass   # pip install manually, env is persistent  
 else:
   if len([p for p in sys.path if 'TFRecordHelper' in p]) == 0:
     sys.path.insert(0, '/Users/kelvinchan/Developer/TFRecordHelper')
