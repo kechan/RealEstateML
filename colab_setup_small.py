@@ -1,14 +1,24 @@
 # To be used in colab:
-# !curl -s -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/kechan/RealEstateML/master/colab_setup_small.py > colab_setup_small.py
-# %run colab_setup_small.py
+# !curl -s -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/kechan/RealEstateML/master/colab_setup_small.py > /tmp/colab_setup_small.py
+# %run /tmp/colab_setup_small.py
 
-import os, shutil, sys
+import os, shutil, sys, argparse
 from pathlib import Path
 from google.cloud import storage
 
 bOnColab = Path('/content').exists()
 bOnKaggle = Path('/kaggle/').exists()
 bOnGCPVM = Path('/home/jupyter').exists()
+
+description = 'Script to setup custom ML environment for Colab, Kaggle, GCP VM, and local machine.'
+
+parser = argparse.ArgumentParser(description=description)
+
+parser.add_argument('--transformers', action='store_true', help='pip install transformers. Needed in Colab')
+parser.add_argument('--jax', action='store_true', help='pip install jax. Needed in Colab')
+parser.add_argument('--flax', action='store_true', help='pip install flax. Needed in Colab')
+
+args = parser.parse_args()
 
 if bOnColab and not Path('/content/drive').exists():
   from google.colab import drive
@@ -25,6 +35,13 @@ else:
 
 if bOnColab:
   os.system("pip -q install pyfarmhash")
+
+  if args.transformers:
+    os.system("pip -q install transformers")
+  if args.jax:
+    os.system("pip -q install --upgrade jax jaxlib")
+  if args.flax:
+    os.system("pip -q install flax")    
 
 if bOnKaggle:
   os.system("pip -q install gdown")
@@ -91,8 +108,9 @@ os.environ["KERAS_SD_HOME"] = str(home/'Keras_SD')
 
 # GCP Cloud Storage
 gcp_storage_project_id = 'royallepage.ca:api-project-267497502775'
-storage_client = storage.Client(project=gcp_storage_project_id)
+
 try:
+  storage_client = storage.Client(project=gcp_storage_project_id)
   bucket = storage_client.get_bucket('ai-tests')
 except:
   bucket = None
