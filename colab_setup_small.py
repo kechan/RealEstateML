@@ -18,6 +18,8 @@ parser.add_argument('--transformers', action='store_true', help='pip install tra
 parser.add_argument('--jax', action='store_true', help='pip install jax. Needed in Colab')
 parser.add_argument('--flax', action='store_true', help='pip install flax. Needed in Colab')
 
+parser.add_argument('--skip_pip_realestate', action='store_true', help='skip pip install for realestate')
+
 args = parser.parse_args()
 
 if bOnColab and not Path('/content/drive').exists():
@@ -53,10 +55,11 @@ if (home/'Developer').exists():
   if len([p for p in sys.path if 'realestate-vision-nlp' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-vision-nlp'))
   if len([p for p in sys.path if 'AVMDataAnalysis' in p]) == 0: sys.path.insert(0, str(home/'AVMDataAnalysis'/'monitoring'))
 elif bOnKaggle:
-  os.system('pip -q install git+https://github.com/kechan/realestate-core')
-  os.system('pip -q install git+https://github.com/kechan/realestate-vision')
-  os.system('pip -q install git+https://github.com/kechan/realestate-nlp')
-  os.system('pip -q install git+https://github.com/kechan/realestate-vision-nlp')
+  if not args.skip_pip_realestate:
+    os.system('pip -q install git+https://github.com/kechan/realestate-core')
+    os.system('pip -q install git+https://github.com/kechan/realestate-vision')
+    os.system('pip -q install git+https://github.com/kechan/realestate-nlp')
+    os.system('pip -q install git+https://github.com/kechan/realestate-vision-nlp')
 elif bOnGCPVM:
   pass   # pip install manually, env is persistent 
 else:
