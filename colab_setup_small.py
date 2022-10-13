@@ -4,7 +4,6 @@
 
 import os, shutil, sys, argparse
 from pathlib import Path
-from google.cloud import storage
 
 bOnColab = Path('/content').exists()
 bOnKaggle = Path('/kaggle/').exists()
