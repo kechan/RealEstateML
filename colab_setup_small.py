@@ -41,7 +41,8 @@ if bOnColab:
   if args.transformers:
     os.system("pip -q install transformers")
   if args.jax:
-    os.system("pip -q install --upgrade jax jaxlib")
+    # os.system("pip -q install --upgrade jax jaxlib")     # jaxlib may be for CPU only.
+    os.system("pip -q install --upgrade jax")
   if args.flax:
     os.system("pip -q install flax")    
 
@@ -113,6 +114,7 @@ os.environ["KERAS_SD_HOME"] = str(home/'Keras_SD')
 gcp_storage_project_id = 'royallepage.ca:api-project-267497502775'
 
 try:
+  from google.cloud import storage
   storage_client = storage.Client(project=gcp_storage_project_id)
   bucket = storage_client.get_bucket('ai-tests')
 except:
