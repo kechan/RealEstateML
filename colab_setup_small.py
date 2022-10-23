@@ -8,6 +8,8 @@ from pathlib import Path
 bOnColab = Path('/content').exists()
 bOnKaggle = Path('/kaggle/').exists()
 bOnGCPVM = Path('/home/jupyter').exists()
+bOnPaperspace = Path('/notebooks').exists()
+bOnLocal = Path('/Users/kelvinchan').exists()
 
 description = 'Script to setup custom ML environment for Colab, Kaggle, GCP VM, and local machine.'
 
@@ -31,8 +33,12 @@ elif bOnKaggle:
   home = Path('/kaggle/working')
 elif bOnGCPVM:
   home = Path('/home/jupyter')
-else:
+elif bOnPaperspace:
+  home = Path('/notebooks')
+elif bOnLocal:
   home = Path('/Users/kelvinchan/kelvin@jumptools.com - Google Drive/My Drive')
+else:
+  home = None
 
 if bOnColab:
   os.system("pip -q install pyfarmhash")
@@ -41,6 +47,7 @@ if bOnColab:
     os.system("pip -q install transformers")
   if args.jax:
     # os.system("pip -q install --upgrade jax jaxlib")     # jaxlib may be for CPU only.
+    #pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_releases.html
     os.system("pip -q install --upgrade jax")
   if args.flax:
     os.system("pip -q install flax")    
@@ -54,26 +61,24 @@ if (home/'Developer').exists():
   if len([p for p in sys.path if 'realestate-vision' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-vision'))
   if len([p for p in sys.path if 'realestate-vision-nlp' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-vision-nlp'))
   if len([p for p in sys.path if 'AVMDataAnalysis' in p]) == 0: sys.path.insert(0, str(home/'AVMDataAnalysis'/'monitoring'))
-elif bOnKaggle:
+elif bOnKaggle or bOnPaperspace:
   if not args.skip_pip_realestate:
     os.system('pip -q install git+https://github.com/kechan/realestate-core')
     os.system('pip -q install git+https://github.com/kechan/realestate-vision')
     os.system('pip -q install git+https://github.com/kechan/realestate-nlp')
     os.system('pip -q install git+https://github.com/kechan/realestate-vision-nlp')
+    os.system('pip -q install git+https://github.com/kechan/TFRecordHelper')
 elif bOnGCPVM:
   pass   # pip install manually, env is persistent 
 else:
-  # git clone all (except AVMDataAnalysis) 
-  os.system('git clone https://github.com/kechan/realestate-core.git')
-  os.system('git clone https://github.com/kechan/realestate-nlp.git')
-  os.system('git clone https://github.com/kechan/realestate-vision.git')
-  os.system('git clone https://github.com/kechan/realestate-vision-nlp.git')
-
-  if len([p for p in sys.path if 'realestate-core' in p]) == 0: sys.path.insert(0, 'realestate-core')
-  if len([p for p in sys.path if 'realestate-nlp' in p]) == 0: sys.path.insert(0, 'realestate-nlp')
-  if len([p for p in sys.path if 'realestate-vision' in p]) == 0: sys.path.insert(0, 'realestate-vision')
-  if len([p for p in sys.path if 'realestate-vision-nlp' in p]) == 0: sys.path.insert(0, 'realestate-vision-nlp')
-
+  # git clone all (except AVMDataAnalysis)
+  if not args.skip_pip_realestate:
+    os.system('pip -q install git+https://github.com/kechan/realestate-core')
+    os.system('pip -q install git+https://github.com/kechan/realestate-vision')
+    os.system('pip -q install git+https://github.com/kechan/realestate-nlp')
+    os.system('pip -q install git+https://github.com/kechan/realestate-vision-nlp')
+    os.system('pip -q install git+https://github.com/kechan/TFRecordHelper')
+  
 
 if bOnColab:
   if len([p for p in sys.path if 'TFRecordHelper' in p]) == 0:
@@ -82,14 +87,11 @@ if bOnColab:
       os.system("git clone https://github.com/kechan/TFRecordHelper.git")      
     except: pass
     sys.path.insert(0, 'TFRecordHelper')
-elif bOnKaggle:
-  os.system("pip -q install git+https://github.com/kechan/TFRecordHelper")
-elif bOnGCPVM:
-  pass   # pip install manually, env is persistent  
-else:
+elif bOnLocal:
   if len([p for p in sys.path if 'TFRecordHelper' in p]) == 0:
     sys.path.insert(0, '/Users/kelvinchan/Developer/TFRecordHelper')
-
+else:
+  pass
 
 import realestate_core.common.class_extensions
 import realestate_vision.common.class_extensions
