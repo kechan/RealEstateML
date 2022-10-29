@@ -120,20 +120,3 @@ try:
   bucket = storage_client.get_bucket('ai-tests')
 except:
   bucket = None
-
-def download_from_gcs(blob_path: str, dest_dir: str = None, debug=False):
-  try:
-    blob = bucket.blob(blob_path)
-    if dest_dir is None:
-      # download to local and use the same filename
-      target_path = str(Path(blob_path).name)
-    else:
-      target_path = str(Path(dest_dir)/Path(blob_path).name)
-
-    blob.download_to_filename(target_path)
-  except Exception as ex:
-    if debug:
-      raise   
-    else:
-      print('Something has gone wrong. Please debug.')
-    
