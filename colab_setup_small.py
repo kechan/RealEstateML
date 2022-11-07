@@ -114,9 +114,10 @@ os.environ["KERAS_SD_HOME"] = str(home/'Keras_SD')
 # GCP Cloud Storage
 gcp_storage_project_id = 'royallepage.ca:api-project-267497502775'
 
-try:
-  from google.cloud import storage
-  storage_client = storage.Client(project=gcp_storage_project_id)
-  bucket = storage_client.get_bucket('ai-tests')
-except:
-  bucket = None
+if not bOnLocal:     # dont need on local, timeout slows things down
+  try:
+    from google.cloud import storage
+    storage_client = storage.Client(project=gcp_storage_project_id)
+    bucket = storage_client.get_bucket('ai-tests')
+  except:
+    bucket = None
