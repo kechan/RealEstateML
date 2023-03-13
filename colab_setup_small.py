@@ -9,7 +9,7 @@ bOnColab = Path('/content').exists()
 bOnKaggle = Path('/kaggle/').exists()
 bOnGCPVM = Path('/home/jupyter').exists()
 bOnPaperspace = Path('/notebooks').exists()
-bOnLocal = Path('/Users/kelvinchan').exists()
+bOnLocal = Path('/Users/Shared').exists()
 
 description = 'Script to setup custom ML environment for Colab, Kaggle, GCP VM, and local machine.'
 
@@ -36,7 +36,9 @@ elif bOnGCPVM:
 elif bOnPaperspace:
   home = Path('/notebooks')
 elif bOnLocal:
-  home = Path('/Users/kelvinchan/kelvin@jumptools.com - Google Drive/My Drive')
+  #home = Path('/Users/kelvinchan/kelvin@jumptools.com - Google Drive/My Drive')
+  home = Path.home()/'kelvin@jumptools.com - Google Drive/My Drive'
+  username = Path.home().name
 else:
   home = None
 
@@ -89,7 +91,7 @@ if bOnColab:
     sys.path.insert(0, 'TFRecordHelper')
 elif bOnLocal:
   if len([p for p in sys.path if 'TFRecordHelper' in p]) == 0:
-    sys.path.insert(0, '/Users/kelvinchan/Developer/TFRecordHelper')
+    sys.path.insert(0, f'/Users/{username}/Developer/TFRecordHelper')
 else:
   pass
 
