@@ -63,12 +63,16 @@ if (home/'Developer').exists():
   if len([p for p in sys.path if 'realestate-vision' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-vision'))
   if len([p for p in sys.path if 'realestate-vision-nlp' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-vision-nlp'))
   if len([p for p in sys.path if 'AVMDataAnalysis' in p]) == 0: sys.path.insert(0, str(home/'AVMDataAnalysis'/'monitoring'))
+  if bOnColab:
+    if len([p for p in sys.path if 'realestate-spam' in p]) == 0: sys.path.insert(0, str(home/'Developer'/'realestate-spam'))    
+
 elif bOnKaggle or bOnPaperspace:
   if not args.skip_pip_realestate:
     os.system('pip -q install git+https://github.com/kechan/realestate-core')
     os.system('pip -q install git+https://github.com/kechan/realestate-vision')
     os.system('pip -q install git+https://github.com/kechan/realestate-nlp')
     os.system('pip -q install git+https://github.com/kechan/realestate-vision-nlp')
+    os.system('pip -q install git+https://github.com/kechan/realestate-spam')
     os.system('pip -q install git+https://github.com/kechan/TFRecordHelper')
 elif bOnGCPVM:
   pass   # pip install manually, env is persistent 
@@ -79,6 +83,7 @@ else:
     os.system('pip -q install git+https://github.com/kechan/realestate-vision')
     os.system('pip -q install git+https://github.com/kechan/realestate-nlp')
     os.system('pip -q install git+https://github.com/kechan/realestate-vision-nlp')
+    os.system('pip -q install git+https://github.com/kechan/realestate-spam')
     os.system('pip -q install git+https://github.com/kechan/TFRecordHelper')
   
 
